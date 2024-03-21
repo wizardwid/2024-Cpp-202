@@ -1,6 +1,6 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 int main() {
-	// �ּ� �׽�Ʈ
+	// 주석 테스트
 	printf("Hello World!");
 	return 0;
 }
