@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="grammer\02-04 string문자추가.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\C++\2024-Cpp-202\grammer\02-05 string 문자열 추가.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
