@@ -12,11 +12,10 @@ public:
 		this->hakbun_ = 2222;
 		name_ = "swag";
 	}
-
-	Student(int hakbun, string name)
+	
+	//멤버변수 초기화 : const/참조 멤버변수를 초기화 할 수 있다.
+	Student(int hakbun, string name) : hakbun_(hakbun), name_(name)
 	{
-		hakbun_ = hakbun;
-		name_ = name;
 	}
 
 	//클래스의 멤버를 출력
