@@ -19,14 +19,16 @@ public:
 	}
 
 	//복사생성자(얕은 복사)
-	Student(const Student& rhs) : hakbun_(rhs.hakbun_), name_(rhs.name_){
+	Student(const Student& rhs) : hakbun_(rhs.hakbun_){
 		cout << "복사생성자 호출 완료" << endl;
+		int length = strlen(rhs.name_);
+		name_ = new char[length + 1];
+		strcpy(name_, rhs.name_);
 	}
 
 	// 소멸자 : 객체가 소멸될 때(메모리에서 지워질 때) 호출되는 함수
 	~Student(void)
 	{
-		//TODO: 얕은 복사로 인하여 이미 제거된 공간을 또 제거하려고 해서 에러 발생
 		delete[]name_;
 		cout << "소멸자 호출 완료" << endl;
 	}
@@ -50,6 +52,5 @@ int main(void)
 	// 복사생성자
 	Student stu2 = stu;
 
-	// TODO : 얕은 복사로 인하여 같은 주소(stu.name_, stu2.name_)에서 두 번 delete 시도
 	return 0;
 }
