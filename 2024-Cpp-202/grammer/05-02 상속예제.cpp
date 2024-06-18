@@ -21,6 +21,15 @@ public:
 		cout << "for문 : " << g_for_ << endl;
 	}
 
+	int* dynamic_allocation_int() {
+		int* ptr =  (int*)malloc(sizeof(int));
+		return ptr;
+	}
+
+	void free_dynamic_allocation(int* ptr) {
+		free(ptr);
+	}
+
 private:
 	bool g_pointer_;
 	bool g_structure_;
@@ -45,6 +54,15 @@ public:
 		cout << "클래스 : " << g_class_ << endl;
 		cout << "상속 : " << g_inheritance_ << endl;
 		cout << "참조 : " << g_reference_ << endl;
+	}
+
+	int* dynaminc_allocation_int() {
+		int* ptr = new int;
+		return ptr;
+	}
+
+	void free_dynamic_allocation(int* ptr) {
+		delete ptr;
 	}
 
 private:
