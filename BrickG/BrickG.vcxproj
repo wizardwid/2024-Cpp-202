@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5f1aca49-fd49-46e4-9f9b-c56852cf8022}</ProjectGuid>
+    <ProjectGuid>{58be1388-78c1-4ad6-bedb-06261425426b}</ProjectGuid>
     <RootNamespace>BrickG</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

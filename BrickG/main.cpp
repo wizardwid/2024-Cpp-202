@@ -1,98 +1,43 @@
 #include <SFML/Graphics.hpp>
-#include <vector>
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
-const int PADDLE_WIDTH = 100;
-const int PADDLE_HEIGHT = 20;
-const int BALL_RADIUS = 10;
-const int BRICK_WIDTH = 60;
-const int BRICK_HEIGHT = 20;
-const int ROWS = 5;
-const int COLS = 10;
+int main()
+{
+    // 창 생성
+    sf::RenderWindow window(sf::VideoMode(800, 600), "bricks");
+    window.setFramerateLimit(60);       //초당 프레임 60으로
 
-int main() {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Brick Breaker");
-    window.setFramerateLimit(60);
+    // 원 객체 생성
+    sf::CircleShape circle(100.f);
+    circle.setFillColor(sf::Color::Magenta);
+    circle.setPosition(0.f, 0.f);
 
-    // Paddle setup
-    sf::RectangleShape paddle(sf::Vector2f(PADDLE_WIDTH, PADDLE_HEIGHT));
-    paddle.setFillColor(sf::Color::Blue);
-    paddle.setPosition(WINDOW_WIDTH / 2 - PADDLE_WIDTH / 2, WINDOW_HEIGHT - PADDLE_HEIGHT - 10);
+    // 사각형 객체 생성
+    sf::RectangleShape rectangle(sf::Vector2f(200.f, 100.f));
+    rectangle.setFillColor(sf::Color::Blue);
+    rectangle.setPosition(0.f, 0.f);
 
-    // Ball setup
-    sf::CircleShape ball(BALL_RADIUS);
-    ball.setFillColor(sf::Color::Red);
-    ball.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-    sf::Vector2f ballVelocity(0.3f, -0.3f);
-
-    // Bricks setup
-    std::vector<sf::RectangleShape> bricks;
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            sf::RectangleShape brick(sf::Vector2f(BRICK_WIDTH, BRICK_HEIGHT));
-            brick.setFillColor(sf::Color::Green);
-            brick.setPosition(j * (BRICK_WIDTH + 5) + 35, i * (BRICK_HEIGHT + 5) + 50);
-            bricks.push_back(brick);
-        }
-    }
-
-    while (window.isOpen()) {
+    // 이벤트 루프 시작
+    while (window.isOpen())
+    {
+        rectangle.move(0.5f, 0);
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event))
+        {
+            // x 마크를 누르면 윈도우 창이 닫아진다.
+            if (event.type == sf::Event::Closed)
                 window.close();
-            }
         }
 
-        // Paddle movement
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && paddle.getPosition().x > 0) {
-            paddle.move(-0.6f, 0.f);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && paddle.getPosition().x + PADDLE_WIDTH < WINDOW_WIDTH) {
-            paddle.move(0.6f, 0.f);
-        }
+        //clear하지 않으면 잔상이 남아있는다
+        // 화면 지우기
+        window.clear(sf::Color::White);
 
-        // Ball movement
-        ball.move(ballVelocity);
+        //덧그리다
+        // 도형 그리기
+        window.draw(circle);
+        window.draw(rectangle);
 
-        // Ball collision with window borders
-        if (ball.getPosition().x < 0 || ball.getPosition().x + 2 * BALL_RADIUS > WINDOW_WIDTH) {
-            ballVelocity.x = -ballVelocity.x;
-        }
-        if (ball.getPosition().y < 0) {
-            ballVelocity.y = -ballVelocity.y;
-        }
-
-        // Ball collision with paddle
-        if (ball.getGlobalBounds().intersects(paddle.getGlobalBounds())) {
-            ballVelocity.y = -ballVelocity.y;
-        }
-
-        // Ball collision with bricks
-        for (auto it = bricks.begin(); it != bricks.end();) {
-            if (ball.getGlobalBounds().intersects(it->getGlobalBounds())) {
-                ballVelocity.y = -ballVelocity.y;
-                it = bricks.erase(it);
-            }
-            else {
-                ++it;
-            }
-        }
-
-        // Ball out of bounds
-        if (ball.getPosition().y > WINDOW_HEIGHT) {
-            // Game over or reset ball
-            ball.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-            ballVelocity = sf::Vector2f(0.3f, -0.3f);
-        }
-
-        window.clear();
-        window.draw(paddle);
-        window.draw(ball);
-        for (const auto& brick : bricks) {
-            window.draw(brick);
-        }
+        // 화면 업데이트
         window.display();
     }
 
