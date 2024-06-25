@@ -4,6 +4,7 @@ int main()
 {
     // 창 생성
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Shapes");
+    window.setFramerateLimit(60);
 
     // 원 객체 생성
     sf::CircleShape circle(100.f);
@@ -13,11 +14,12 @@ int main()
     // 사각형 객체 생성
     sf::RectangleShape rectangle(sf::Vector2f(200.f, 100.f));
     rectangle.setFillColor(sf::Color::Blue);
-    rectangle.setPosition(400.f, 300.f);
+    rectangle.setPosition(0.f, 0.f);
 
     // 이벤트 루프 시작
     while (window.isOpen())
     {
+        rectangle.move(0.1f,0);
         sf::Event event;
         while (window.pollEvent(event))
         {
