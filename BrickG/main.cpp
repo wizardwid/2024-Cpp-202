@@ -2,6 +2,7 @@
 
 int main()
 {
+    //init
     // 창 생성
     sf::RenderWindow window(sf::VideoMode(800, 600), "bricks");
     window.setFramerateLimit(60);       //초당 프레임 60으로
@@ -19,6 +20,7 @@ int main()
     // 이벤트 루프 시작
     while (window.isOpen())
     {
+        //update
         rectangle.move(0.5f, 0);
         sf::Event event;
         while (window.pollEvent(event))
@@ -28,6 +30,7 @@ int main()
                 window.close();
         }
 
+        //draw
         //clear하지 않으면 잔상이 남아있는다
         // 화면 지우기
         window.clear(sf::Color::White);
