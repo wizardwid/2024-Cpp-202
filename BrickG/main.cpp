@@ -68,7 +68,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Bricks");
     window.setFramerateLimit(60);
 
-    Ball ball(400.f, 300.f);
+    Ball ball(800 / 2.f, 300.f);
     Paddle paddle(400.f, 550.f);
 
     while (window.isOpen())
@@ -82,12 +82,14 @@ int main()
 
         // update
         paddle.update();
+        ball.update();
 
         // 화면 지우기
         window.clear(sf::Color::White);
 
         // 그리기
         window.draw(paddle.shape);
+        window.draw(ball.shape);
 
         // 화면 업데이트
         window.display();
