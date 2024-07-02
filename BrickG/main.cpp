@@ -63,13 +63,46 @@ public:
     float bottom() { return shape.getPosition().y + shape.getSize().y / 2.f; }
 };
 
+// Brick 클래스 정의
+class Brick {
+public:
+    sf::RectangleShape shape;
+    bool destroyed = false;
+
+    Brick() {
+        shape.setSize({ 60.f, 20.f });
+        shape.setFillColor(sf::Color::Yellow);
+        shape.setOrigin(30.f, 10.f);
+    }
+
+    Brick(float mX, float mY) {
+        shape.setPosition(mX, mY);
+        shape.setSize({ 60.f, 20.f });
+        shape.setFillColor(sf::Color::Yellow);
+        shape.setOrigin(30.f, 10.f);
+    }
+
+    void setPosition(float mX, float mY) {
+        shape.setPosition(mX, mY);
+    }
+};
+
+const int brick_row = 4;
+const int brick_column = 7;
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Bricks");
     window.setFramerateLimit(60);
 
     Ball ball(800 / 2.f, 300.f);
-    Paddle paddle(400.f, 550.f);
+    Paddle paddle(600.f, 550.f);
+    Brick bricks[brick_row][brick_column];
+    for (int i = 0; i < brick_row; i++) {
+        for (int j = 0; j < brick_column; j++) {
+            bricks[i][j].setPosition(200 + (60 + 10) * j, 200 + (20 + 10) * i);
+        }
+    }
 
     while (window.isOpen())
     {
@@ -88,13 +121,34 @@ int main()
         if (ball.shape.getGlobalBounds().intersects(paddle.shape.getGlobalBounds())) {
             ball.velocity.y = -ball.velocity.y;
         }
+        
+        // 공과 벽돌의 충돌처리
+        for (int i = 0; i < brick_row; i++) {
+            for (int j = 0; j < brick_column; j++) {
+                if (ball.shape.getGlobalBounds().intersects(bricks[i][j].shape.getGlobalBounds())) {
+                    if (bricks[i][j].destroyed == false) {
+                        bricks[i][j].destroyed = true;
+                        ball.velocity.y = -ball.velocity.y;
+                       //ball.velocity.x = -ball.velocity.x;
+                    }
+                }
+            }
+        }
 
+        // draw
         // 화면 지우기
         window.clear(sf::Color::White);
 
         // 그리기
         window.draw(paddle.shape);
         window.draw(ball.shape);
+        for (int i = 0; i < brick_row; i++) {
+            for (int j = 0; j < brick_column; j++) {
+                if (bricks[i][j].destroyed == false) {
+                    window.draw(bricks[i][j].shape);
+                }
+            }
+        }
 
         // 화면 업데이트
         window.display();
