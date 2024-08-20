@@ -3,8 +3,15 @@
 
 using namespace std;
 
-class animal {
+class Animal {
 public:
+	Animal(string name, unsigned int age, int leg_num)
+		: name_(name), age_(age), leg_num_(leg_num){
+		name_ = name;
+		age_ = age;
+		leg_num_ = leg_num;
+	}
+
 	void walk(void) {
 		cout << "걷다" << endl;
 	}
@@ -22,7 +29,7 @@ private:
 };
 
 void main(void) {
-	animal* ani = new animal();
+	Animal* ani = new Animal("곰", 1, 4);
 	ani->bark();
 	ani->walk();
 	ani->eat();
