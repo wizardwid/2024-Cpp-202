@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 
 using namespace std;
@@ -6,13 +6,13 @@ using namespace std;
 class animal {
 public:
 	void walk(void) {
-		cout << "°È´Ù" << endl;
+		cout << "ê±·ë‹¤" << endl;
 	}
 	void bark(void) {
-		cout << "Â¢´Ù" << endl;
+		cout << "ì§–ë‹¤" << endl;
 	}
 	void eat(void) {
-		cout << "¸Ô´Ù" << endl;
+		cout << "ë¨¹ë‹¤" << endl;
 	}
 
 private:
