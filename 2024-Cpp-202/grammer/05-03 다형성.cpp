@@ -37,15 +37,15 @@ public:
 		cout << "충성도" << endl;
 	}
 
-	void bark() {
+	void bark() override{
 		cout << "WfWf" << endl;
 	}
 
-	void eat() {
+	void eat() override{
 		cout << "왕~왕~" << endl;
 	}
 
-	void walk() {
+	void walk() override{
 		cout << "촵촵촵촵" << endl;
 	}
 
