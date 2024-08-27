@@ -3,15 +3,8 @@
 
 using namespace std;
 
-int sum(int a, int b) {
-	return a + b;
-}
-
-string sum(string a, string b) {
-	return a + b;
-}
-
-float sum(float a, float b) {
+template <typename T>
+T sum(T a, T b) {
 	return a + b;
 }
 
