@@ -10,6 +10,4 @@ T sum(T a, T b) {
 
 void main(void) {
 	cout << sum(1, 2) << endl;
-	cout << sum("1", "2") << endl;
-	cout << sum(1.f, 2.f) << endl;
 }
