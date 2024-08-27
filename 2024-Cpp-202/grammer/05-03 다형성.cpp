@@ -16,17 +16,9 @@ public:
 		cout << "Animal 소멸자" << endl;
 	}
 
-	virtual void walk(void) {
-		cout << "걷다" << endl;
-	}
-
-	virtual void bark(void) {
-		cout << "짖다" << endl;
-	}
-
-	virtual void eat(void) {
-		cout << "먹다" << endl;
-	}
+	virtual void walk() = 0;
+	virtual void bark() = 0;
+	virtual void eat() = 0;
 
 private:
 	string name_;
@@ -50,7 +42,7 @@ public:
 	}
 
 	void eat() override{
-		cout << "왕~왕~" << endl;
+		cout << "쩝쩝" << endl;
 	}
 
 	void walk() override{
@@ -62,7 +54,8 @@ private:
 };
 
 void main(void) {
+	//  추상 클래스는 객체를 생성할 수 없다.(new Animal() 불가)
 	Animal* animal = new Dog("마루", 5, 2, 100);
-
+	animal->bark();
 	delete animal;
 }
