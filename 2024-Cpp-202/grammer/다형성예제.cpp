@@ -9,7 +9,7 @@ public:
 		: civil_(civil), force_(force), name_(name), territory_(territory) {
 	}
 
-	void show() {
+	virtual void show() {
 		cout << "±¹¹Î : " << civil_ << endl;
 		cout << "±¹·Â : " << force_ << endl;
 		cout << "ÀÌ¸§ : " << name_ << endl;
@@ -30,6 +30,7 @@ public:
 	}
 
 	void show() {
+		Food::show();
 		cout << "¸¶´Ã : " << garlic_ << endl;
 		cout << "°íÃß : " << pepper_ << endl;
 	}
@@ -46,6 +47,7 @@ public:
 	}
 
 	void show() {
+		Food::show();
 		cout << "Á©¶óÆ¾ : " << gelatin_ << endl;
 		cout << "¼³ÅÁ : " << sugar_ << endl;
 	}
@@ -62,6 +64,7 @@ public:
 	}
 
 	void show() {
+		Food::show();
 		cout << "¿ìÀ¯ : " << milk_ << endl;
 		cout << "ÀÀ°íÁ¦ : " << rennet_ << endl;
 	}
