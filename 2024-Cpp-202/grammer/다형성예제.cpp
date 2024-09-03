@@ -17,7 +17,8 @@ public:
 		cout << "¶¥ : " << territory_ << endl;
 	}
 
-private:
+	virtual void attack(Food* target) = 0;
+
 	int civil_;	//±¹¹Î ¼ö
 	int force_;	//±º·Â
 	string name_;	//ÀÌ¸§
@@ -36,7 +37,10 @@ public:
 		cout << "°íÃß : " << pepper_ << endl;
 	}
 
-private:
+	void attack(Food* target) override {
+		target->force_ -= this->force_ * 2;
+	}
+
 	int pepper_;
 	int garlic_;	//¸¶´ÃÀÇ Èû
 };
@@ -53,7 +57,10 @@ public:
 		cout << "¼³ÅÁ : " << sugar_ << endl;
 	}
 
-private:
+	void attack(Food* target) override {
+		target->force_ += this->force_/2;
+	}
+
 	int gelatin_;
 	int sugar_;		//¼³ÅÁÀÇ Èû
 };
@@ -70,7 +77,10 @@ public:
 		cout << "ÀÀ°íÁ¦ : " << rennet_ << endl;
 	}
 
-private:
+	void attack(Food* target) override {
+		target->force_ -= this->force_ / 3;
+	}
+
 	int milk_;
 	int rennet_;	//ÀÀ°íÁ¦ÀÇ Èû
 };
@@ -102,6 +112,7 @@ void main(void) {
 			case 1:
 				//TODO : °ø°İ
 				cout << "°ø°İ" << endl;
+				player->attack(friends);
 				break;
 			case 2:
 				//TODO : Æ¯¼ö1
