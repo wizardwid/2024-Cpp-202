@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -78,9 +79,47 @@ void main(void) {
 	Food* player = new Kimchi(15, 95, "갓김치", 86, 100, 100);
 	Food* friends = new Cheese(100, 20, "짜계치", 100, 20, 100);
 
-	player->show();
-	cout << endl << endl;
-	friends->show();
+	while (true) {
+		system("cls");
+		cout << "나" << endl;
+		player->show();
+
+		cout << endl << endl;
+		cout << "상대방" << endl;
+		friends->show();
+
+		cout << "----------------------------------" << endl;
+
+		int select;
+		cout << "1. 공격" << endl;
+		cout << "2. 특수1" << endl;
+		cout << "3. 특수2" << endl;
+		cout << "4. 방어" << endl;
+
+		cin >> select;
+
+		switch (select) {
+			case 1:
+				//TODO : 공격
+				cout << "공격" << endl;
+				break;
+			case 2:
+				//TODO : 특수1
+				cout << "특수1" << endl;
+				break;
+			case 3:
+				//TODO : 특수2
+				cout << "특수2" << endl;
+				break;
+			case 4:
+				//TODO : 방어
+				cout << "방어" << endl;
+				break;
+			default:
+				cout << "default" << endl;
+		}
+		system("pause");
+	}
 
 	delete friends;
 	delete player;
