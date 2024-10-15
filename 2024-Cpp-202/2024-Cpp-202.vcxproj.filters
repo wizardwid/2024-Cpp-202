@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="grammer\09-02 enum.cpp">
+    <ClCompile Include="grammer\09-02 범위기반 for문.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
