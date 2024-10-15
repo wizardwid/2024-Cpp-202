@@ -21,7 +21,7 @@ private:
 string SW2_2::teacher_ = "±ÇÁö¿õ";
 int SW2_2::num_ = 0;
 
-void main() {
+void main(void) {
 	SW2_2* sb = new SW2_2("Jo Subin");
 	cout << "number : " << sb->get_num() << endl;
 	SW2_2* js = new SW2_2("Na Jisu");
