@@ -20,7 +20,16 @@ void main(void) {
 		RectangleShape player;
 		player.setSize(Vector2f(181.f, 75.f));
 		player.setFillColor(Color::Magenta);
-		player.setPosition(500.f, 400.f);
+		player.setPosition((App::WIDTH-player.getSize().x)/2.f, 600.f);
+
+		if (Keyboard::isKeyPressed(Keyboard::Left))
+			player.move(-10, 0);
+		if (Keyboard::isKeyPressed(Keyboard::Right))
+			player.move(10, 0);
+		if (Keyboard::isKeyPressed(Keyboard::Up))
+			player.move(0, -10);
+		if (Keyboard::isKeyPressed(Keyboard::Down))
+			player.move(0, 10);
 
 		window.clear();
 		window.draw(player);
