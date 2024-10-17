@@ -22,10 +22,10 @@ string SW2_2::teacher_ = "권지웅";
 int SW2_2::num_ = 0;
 
 void main(void) {
-	SW2_2* sb = new SW2_2("Jo Subin");
-	cout << "number : " << sb->get_num() << endl;
-	SW2_2* js = new SW2_2("Na Jisu");
-	cout << "number : " << js->get_num() << endl;
+	SW2_2* sb = new SW2_2("조수빈");
+	cout << "인원 수 : " << SW2_2::get_num() << endl;
+	SW2_2* js = new SW2_2("나지수");
+	cout << "인원 수 : " << SW2_2::get_num() << endl;
 
 	delete js;
 	delete sb;
