@@ -10,6 +10,12 @@ enum App {
 
 void main(void) {
 	RenderWindow window(VideoMode(App::WIDTH, App::HEIGHT), "shootingG");
+	window.setFramerateLimit(60);
+
+	RectangleShape player;
+	player.setSize(Vector2f(181.f, 75.f));
+	player.setFillColor(Color::Magenta);
+	player.setPosition((App::WIDTH - player.getSize().x) / 2.f, 600.f);
 
 	while (window.isOpen()) {
 		Event event;
@@ -17,10 +23,6 @@ void main(void) {
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		RectangleShape player;
-		player.setSize(Vector2f(181.f, 75.f));
-		player.setFillColor(Color::Magenta);
-		player.setPosition((App::WIDTH-player.getSize().x)/2.f, 600.f);
 
 		if (Keyboard::isKeyPressed(Keyboard::Left))
 			player.move(-10, 0);
